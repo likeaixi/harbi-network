@@ -7,6 +7,6 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-nohup /root/harbi/harbid --utxoindex --rpcmaxclients=2048 --rpclisten=0.0.0.0:24110 --appdir=/root/harbi/data >/root/harbid-`date +%Y-%m-%d`.log  2>&1 &
+nohup /root/harbi/harbid --utxoindex --rpcmaxclients=2048 --rpclisten=0.0.0.0:24110 --appdir=/root/harbi/data >/root/harbi/harbid-`date +%Y-%m-%d`.log  2>&1 &
 
 echo "[`date '+%Y-%m-%d %H:%M:%s'`] harbid started"
