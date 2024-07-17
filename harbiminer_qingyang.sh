@@ -7,18 +7,6 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-# 获取 CPU 核心总数
-cpu_cores=$(grep -c ^processor /proc/cpuinfo)
-
-# 计算 90% 的核心数
-cpu_cores_90=$(echo "$cpu_cores * 0.9" | bc)
-
-# 取整，舍弃小数部分
-cpu_cores_90=$(printf "%.0f" $cpu_cores_90)
-
-echo "CPU 核心总数: $cpu_cores"
-echo "90% 的 CPU 核心数: $cpu_cores_90"
-
-nohup /root/harbi/harbiminer --miningaddr=harbi:qr4wu7cyx26zgjyyj6jw2nlz9vlxlyxufs8rwuy4ty9v9ftp23dxzy7r3gep3 --rpcserver=192.168.111.89:24110 --workers=$cpu_cores_90 >/root/harbi/harbiminer-`date +%Y-%m-%d`.log  2>&1 &
+nohup /root/harbi/harbiminer --miningaddr=harbi:qr4wu7cyx26zgjyyj6jw2nlz9vlxlyxufs8rwuy4ty9v9ftp23dxzy7r3gep3 --rpcserver=192.168.111.89:24110 >/root/harbi/harbiminer-`date +%Y-%m-%d`.log  2>&1 &
 
 echo "[`date '+%Y-%m-%d %H:%M:%s'`] harbiminer started"
